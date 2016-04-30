@@ -1,0 +1,26 @@
+{
+  "name": "anyurlhttpserver",
+  "version": "1.0.0",
+  "description": "A HTTP server that responds with the content of the input file, irrespective of what method / path is requested. Can be used for quickly mocking a API response for dev / testing purposes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "keywords": [
+    "http",
+    "test",
+    "mock",
+    "tool"
+  ],
+  "author": "Subhash Chandran",
+  "license": "ISC",
+  "preferGlobal": true,
+  "dependencies": {
+    "express": "^4.13.4",
+    "wiz-cliparse": "^0.5.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  }
+}
