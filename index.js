@@ -5,6 +5,7 @@
 var fs = require('fs');
 
 // Constants:
+const DEF_PORT = 10101;
 const DEF_CONTENT = '{"hello": "world"}';
 const DEF_CT = 'application/json';
 const DEF_STATUS = 200;
@@ -13,10 +14,9 @@ const DEF_STATUS = 200;
 var Program = require('wiz-cliparse');
 var prg = new Program('anyurlhttpserver',
   'Serve one file for any url path / method.',
-  '-p <port> [other-options]',
-  'Port is a mandatory option.');
+  '[options]');
 
-prg.addOpt('p', 'port', '[Mandatory] Port to listen.', {isMandatory: true, hasArg: true});
+prg.addOpt('p', 'port', `Port to listen. Default is \`${DEF_PORT}\`.`, {hasArg: true});
 prg.addOpt('f', 'file', `File to serve. When not given, serves content \`${DEF_CONTENT}\`.`, {hasArg: true});
 prg.addOpt('c', 'content-type', `Response content type. Default is \`${DEF_CT}\`.`, {hasArg: true});
 prg.addOpt('H', 'header', '* Response header in the format `header:value`.', {hasArg: true, multiArg: true});
@@ -35,14 +35,17 @@ catch(err) {
 
 if(res.gopts.has('h')) {
   prg.printHelp(res);
-  console.log();
   console.log('  Parameters with * can be used more than once.');
+  console.log();
   process.exit();
 }
 
 // Assign to variables:
 var port = (function(){
-  var p = parseInt(res.goptArg.get('p'));
+  if(!res.gopts.has('p')) {
+    return DEF_PORT;
+  }
+  let p = parseInt(res.goptArg.get('p'));
   if(Number.isNaN(p)) {
     console.error(`Invalid port specified: ${p}.`);
     process.exit(1);
@@ -117,4 +120,6 @@ app.all('/*', function(req, res){
   res.status(status);
   res.send(data);
 });
+
+console.log(`Starting server in port ${port}.`);
 app.listen(port);
