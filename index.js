@@ -22,7 +22,7 @@ prg.addOpt('c', 'content-type', `Response content type. Default is \`${DEF_CT}\`
 prg.addOpt('H', 'header', '* Response header in the format `header:value`.', {hasArg: true, multiArg: true});
 prg.addOpt('s', 'status-code', `Response status code. Default is \`${DEF_STATUS}\`.`, {hasArg: true});
 
-prg.addHelpOpt();
+prg.addHelpOpt('Output usage information.');
 
 // Cli parse:
 try {
