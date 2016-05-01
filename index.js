@@ -21,6 +21,7 @@ prg.addOpt('f', 'file', `File to serve. When not given, serves content \`${DEF_C
 prg.addOpt('c', 'content-type', `Response content type. Default is \`${DEF_CT}\`.`, {hasArg: true});
 prg.addOpt('H', 'header', '* Response header in the format `header:value`.', {hasArg: true, multiArg: true});
 prg.addOpt('s', 'status-code', `Response status code. Default is \`${DEF_STATUS}\`.`, {hasArg: true});
+prg.addOpt('v', 'version', 'Display anyurlhttpserver version.');
 
 prg.addHelpOpt('Output usage information.');
 
@@ -37,6 +38,12 @@ if(res.gopts.has('h')) {
   prg.printHelp(res);
   console.log('  Parameters with * can be used more than once.');
   console.log();
+  process.exit();
+}
+
+if(res.gopts.has('v')) {
+  let pjson = require(__dirname + '/package.json');
+  console.log(`v${pjson.version}`);
   process.exit();
 }
 
