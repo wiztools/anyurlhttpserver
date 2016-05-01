@@ -15,7 +15,7 @@ var pjson = require(__dirname + '/package.json');
 
 // Cli configuration:
 var Program = require('wiz-cliparse');
-var prg = new Program('anyurlhttpserver',
+var prg = new Program(pjson.name,
   'Serve one file for any url path / method.',
   '[options]');
 
