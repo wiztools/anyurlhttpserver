@@ -18,6 +18,10 @@
   "bin": {
     "anyurlhttpserver": "./index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wiztools/anyurlhttpserver.git"
+  },
   "dependencies": {
     "express": "^4.13.4",
     "wiz-cliparse": "^0.5.0"
