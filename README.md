@@ -26,6 +26,7 @@ When the above command is executed, any URL that is hit at http://localhost:3000
     -c, --content-type   Response content type. Default is `application/json`.
     -H, --header         * Response header in the format `header:value`.
     -s, --status-code    Response status code. Default is `200`.
+    -v, --version        Display anyurlhttpserver version.
     -h, --help           output usage information.
 
   Parameters with * can be used more than once.

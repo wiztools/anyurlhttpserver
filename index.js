@@ -10,6 +10,9 @@ const DEF_CONTENT = '{"hello": "world"}';
 const DEF_CT = 'application/json';
 const DEF_STATUS = 200;
 
+// Load package.json:
+var pjson = require(__dirname + '/package.json');
+
 // Cli configuration:
 var Program = require('wiz-cliparse');
 var prg = new Program('anyurlhttpserver',
@@ -21,7 +24,7 @@ prg.addOpt('f', 'file', `File to serve. When not given, serves content \`${DEF_C
 prg.addOpt('c', 'content-type', `Response content type. Default is \`${DEF_CT}\`.`, {hasArg: true});
 prg.addOpt('H', 'header', '* Response header in the format `header:value`.', {hasArg: true, multiArg: true});
 prg.addOpt('s', 'status-code', `Response status code. Default is \`${DEF_STATUS}\`.`, {hasArg: true});
-prg.addOpt('v', 'version', 'Display anyurlhttpserver version.');
+prg.addOpt('v', 'version', `Display ${pjson.name} version.`);
 
 prg.addHelpOpt('Output usage information.');
 
@@ -42,7 +45,6 @@ if(res.gopts.has('h')) {
 }
 
 if(res.gopts.has('v')) {
-  let pjson = require(__dirname + '/package.json');
   console.log(`v${pjson.version}`);
   process.exit();
 }
