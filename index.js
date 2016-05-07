@@ -19,7 +19,7 @@ var prg = new Program(pjson.name,
   'Serve one file for any url path / method.',
   '[options]');
 
-prg.addOpt('p', 'port', `Port to listen. Default is \`${DEF_PORT}\`.`, {hasArg: true});
+prg.addOpt('p', 'port', `[Mandatory] Port to listen.`, {hasArg: true, isMandatory: true});
 prg.addOpt('f', 'file', `File to serve. When not given, serves content \`${DEF_CONTENT}\`.`, {hasArg: true});
 prg.addOpt('c', 'content-type', `Response content type. Default is \`${DEF_CT}\`.`, {hasArg: true});
 prg.addOpt('H', 'header', '* Response header in the format `header:value`.', {hasArg: true, multiArg: true});
@@ -33,7 +33,7 @@ try {
   var res = prg.parse();
 }
 catch(err) {
-  console.error(`Cli parse error: ${err}.`);
+  console.error(`Cli parse error: ${err}`);
   process.exit(1);
 }
 
