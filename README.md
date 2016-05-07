@@ -21,7 +21,7 @@ When the above command is executed, any URL that is hit at http://localhost:3000
 
   Options:
 
-    -p, --port           Port to listen. Default is `10101`.
+    -p, --port           [Mandatory] Port to listen.
     -f, --file           File to serve. When not given, serves content `{"hello": "world"}`.
     -c, --content-type   Response content type. Default is `application/json`.
     -H, --header         * Response header in the format `header:value`.
