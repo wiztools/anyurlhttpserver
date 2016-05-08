@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 
-"use strict";
+'use strict';
 
 var fs = require('fs');
 
 // Constants:
-const DEF_PORT = 10101;
 const DEF_CONTENT = '{"hello": "world"}';
 const DEF_CT = 'application/json';
 const DEF_STATUS = 200;
@@ -51,9 +50,6 @@ if(res.gopts.has('v')) {
 
 // Assign to variables:
 var port = (function(){
-  if(!res.gopts.has('p')) {
-    return DEF_PORT;
-  }
   let p = parseInt(res.goptArg.get('p'));
   if(Number.isNaN(p)) {
     console.error(`Invalid port specified: ${p}.`);
