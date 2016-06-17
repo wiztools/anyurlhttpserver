@@ -21,6 +21,7 @@ var prg = new Program(pjson.name,
 prg.addOpt('p', 'port', `[Mandatory] Port to listen.`, {hasArg: true, isMandatory: true});
 prg.addOpt('f', 'file', `File to serve. When not given, serves content \`${DEF_CONTENT}\`.`, {hasArg: true});
 prg.addOpt('c', 'content-type', `Response content type. Default is \`${DEF_CT}\`.`, {hasArg: true});
+prg.addOpt('C', 'cors', 'Url to add CORS support.', {hasArg: true});
 prg.addOpt('H', 'header', '* Response header in the format `header:value`.', {hasArg: true, multiArg: true});
 prg.addOpt('s', 'status-code', `Response status code. Default is \`${DEF_STATUS}\`.`, {hasArg: true});
 prg.addOpt('v', 'version', `Display ${pjson.name} version.`);
@@ -106,6 +107,15 @@ var headers = (function(){
   }
 })();
 
+var corsUrl = (function() {
+  if(res.gopts.has('C')) {
+    return res.goptArg.get('C');
+  }
+  else {
+    return null;
+  }
+})();
+
 // Web server start:
 var express = require('express');
 var app = express();
@@ -121,6 +131,11 @@ app.all('/*', function(req, res){
     else {
       console.error(`Not setting unparsable header: ${header}.`);
     }
+  }
+  if(corsUrl) {
+    res.setHeader('Access-Control-Allow-Origin', corsUrl);
+    res.setHeader('Access-Control-Request-Method', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token');
   }
   res.status(status);
   res.send(data);
