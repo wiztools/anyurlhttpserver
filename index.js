@@ -36,7 +36,7 @@ prg.addOpt('H', 'header',
 prg.addOpt('s', 'status-code',
   `Response status code. Default is '${DEF_STATUS}'.`,
   {hasArg: true});
-prg.addOpt('v', 'version', `Display ${pjson.name} version.`);
+prg.addOpt('v', 'version', `Display ${pjson.name} version.`, {ignoreMandatoryOptCheck: true});
 
 prg.addHelpOpt('Output usage information.');
 

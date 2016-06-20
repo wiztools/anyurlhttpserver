@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "express": "^4.13.4",
-    "wiz-cliparse": "^0.5.2"
+    "wiz-cliparse": "^0.5.3"
   },
   "devDependencies": {
     "chai": "^3.5.0",
