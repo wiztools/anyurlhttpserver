@@ -18,12 +18,24 @@ var prg = new Program(pjson.name,
   'Serve one file for any url path / method.',
   '[options]');
 
-prg.addOpt('p', 'port', `[Mandatory] Port to listen.`, {hasArg: true, isMandatory: true});
-prg.addOpt('f', 'file', `File to serve. When not given, serves content '${DEF_CONTENT}'.`, {hasArg: true});
-prg.addOpt('c', 'content-type', `Response content type. Default is '${DEF_CT}'.`, {hasArg: true});
-prg.addOpt('C', 'cors', `Url to add CORS support. Default is '*'.`, {hasArg: true, defaultArg: '*'});
-prg.addOpt('H', 'header', `* Response header in the format 'header:value'.`, {hasArg: true, multiArg: true});
-prg.addOpt('s', 'status-code', `Response status code. Default is '${DEF_STATUS}'.`, {hasArg: true});
+prg.addOpt('p', 'port',
+  `[Mandatory] Port to listen.`,
+  {hasArg: true, isMandatory: true});
+prg.addOpt('f', 'file',
+  `File to serve. When not given, serves content '${DEF_CONTENT}'.`,
+  {hasArg: true});
+prg.addOpt('c', 'content-type',
+  `Response content type. Default is '${DEF_CT}'.`,
+  {hasArg: true});
+prg.addOpt('C', 'cors',
+  `Enable CORS headers in response. Optional Allow-Origin URL as parameter (default is '*').`,
+  {hasArg: true, defaultArg: '*'});
+prg.addOpt('H', 'header',
+  `* Response header in the format 'header:value'.`,
+  {hasArg: true, multiArg: true});
+prg.addOpt('s', 'status-code',
+  `Response status code. Default is '${DEF_STATUS}'.`,
+  {hasArg: true});
 prg.addOpt('v', 'version', `Display ${pjson.name} version.`);
 
 prg.addHelpOpt('Output usage information.');
