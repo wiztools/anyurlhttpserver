@@ -1,6 +1,6 @@
 {
   "name": "anyurlhttpserver",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A HTTP server that responds with the content of the input file, irrespective of what method / path is requested. Can be used for quickly mocking a API response for dev / testing purposes.",
   "main": "index.js",
   "scripts": {
