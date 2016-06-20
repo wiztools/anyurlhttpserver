@@ -28,7 +28,7 @@ prg.addOpt('c', 'content-type',
   `Response content type. Default is '${DEF_CT}'.`,
   {hasArg: true});
 prg.addOpt('C', 'cors',
-  `Enable CORS headers in response. Optional Allow-Origin URL as parameter (default is '*').`,
+  `Add CORS headers to response. Optional Allow-Origin URL as param. Default is '*'.`,
   {hasArg: true, defaultArg: '*'});
 prg.addOpt('H', 'header',
   `* Response header in the format 'header:value'.`,

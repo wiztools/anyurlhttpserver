@@ -24,7 +24,7 @@ When the above command is executed, any URL that is hit at http://localhost:3000
     -p, --port           [Mandatory] Port to listen.
     -f, --file           File to serve. When not given, serves content '{"hello": "world"}'.
     -c, --content-type   Response content type. Default is 'application/json'.
-    -C, --cors           Enable CORS headers in response. Optional Allow-Origin URL as parameter (default is '*').
+    -C, --cors           Add CORS headers to response. Optional Allow-Origin URL as param. Default is '*'.
     -H, --header         * Response header in the format 'header:value'.
     -s, --status-code    Response status code. Default is '200'.
     -v, --version        Display anyurlhttpserver version.
