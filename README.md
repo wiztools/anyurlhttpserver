@@ -27,6 +27,7 @@ When the above command is executed, any URL that is hit at http://localhost:3000
     -C, --cors           Add CORS headers to response. Optional Allow-Origin URL as param. Default is '*'.
     -H, --header         * Response header in the format 'header:value'.
     -s, --status-code    Response status code. Default is '200'.
+    -n, --ngrok          Provides an ngrok tunnel url for the running server.
     -v, --version        Display anyurlhttpserver version.
     -h, --help           Output usage information.
 

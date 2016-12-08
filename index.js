@@ -3,6 +3,7 @@
 'use strict';
 
 var fs = require('fs');
+var ngrokTunnel = require('ngrok');
 
 // Constants:
 const DEF_CONTENT = '{"hello": "world"}';
@@ -33,6 +34,8 @@ prg.addOpt('C', 'cors',
 prg.addOpt('H', 'header',
   `* Response header in the format 'header:value'.`,
   {hasArg: true, multiArg: true});
+prg.addOpt('n', 'ngrok',
+  `Provides an ngrok tunnel url for the running server.`);
 prg.addOpt('s', 'status-code',
   `Response status code. Default is '${DEF_STATUS}'.`,
   {hasArg: true});
@@ -128,6 +131,15 @@ var corsUrl = (function() {
   }
 })();
 
+var ngrok = (function() {
+  if(res.gopts.has('n')) {
+    return true;
+  }
+  else {
+    return false;
+  }
+})();
+
 // Web server start:
 var express = require('express');
 var app = express();
@@ -154,4 +166,11 @@ app.all('/*', function(req, res){
 });
 
 console.log(`Starting server in port ${port}.`);
-app.listen(port);
+app.listen(port, function(){
+  if (ngrok) {
+    ngrokTunnel.connect(port, function (err, url) {
+      console.log('\nngrok url:');
+      console.log(url);
+    });
+  }
+});

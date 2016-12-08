@@ -24,7 +24,8 @@
   },
   "dependencies": {
     "express": "^4.13.4",
-    "wiz-cliparse": "^0.5.4"
+    "wiz-cliparse": "^0.5.4",
+    "ngrok" : "2.2.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",
