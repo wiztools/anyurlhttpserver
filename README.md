@@ -4,6 +4,13 @@ A HTTP server that responds with the content of the input file, irrespective of 
 
 ## Install
 
+### Mac - homebrew
+
+    brew tap wiztools/repo
+    brew install anyurlhttpserver
+
+### Other platforms
+
     npm install anyurlhttpserver -g
 
 ## Run
